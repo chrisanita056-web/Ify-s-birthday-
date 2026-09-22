@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Ogbungwa! 🎂</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffd6e7, #fff0f5, #f8d7da);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* WELCOME SCREEN */
+        #welcome {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #ffd6e7, #fff0f5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 2000;
+            transition: opacity 0.8s ease;
+        }
+
+        .welcome-content {
+            width: 85%;
+            max-width: 350px;
+        }
+
+        .welcome-content h1 {
+            color: #d94f70;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .welcome-content p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .gift {
+            font-size: 75px;
+            animation: giftBounce 2.5s infinite;
+        }
+
+        @keyframes giftBounce {
+            0%, 50%, 100% {
+                transform: translateY(0);
+            }
+
+            25% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* MAIN CARD */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px 25px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(180, 70, 110, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            margin: 40px auto;
+            animation: popIn 0.8s ease-out;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #d94f70;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #d94f70;
+            font-size: 21px;
+        }
+
+        p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* BUTTON */
+        .btn {
+            background: linear-gradient(135deg, #e75480, #d94f70);
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(217, 79, 112, 0.3);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        /* HIDDEN SURPRISE */
+        .hidden-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            color: #333;
+            font-weight: 600;
+            background: #fff5f8;
+            border-radius: 15px;
+            animation: fadeIn 0.7s ease-in;
+        }
+
+        /* BIRTHDAY LETTER */
+        .letter {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background: #fff5f8;
+            border-radius: 18px;
+            text-align: left;
+            color: #555;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .letter h2 {
+            text-align: center;
+            color: #d94f70;
+            font-size: 20px;
+        }
+
+        .letter p {
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* FINAL MESSAGE */
+        .final-message {
+            display: none;
+            margin-top: 25px;
+            padding: 25px 15px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .final-message h2 {
+            color: #d94f70;
+            font-size: 21px;
+        }
+
+        .final-message p {
+            font-size: 14px;
+        }
+
+        .love {
+            color: #d94f70;
+            font-weight: bold;
+        }
+
+        .big-heart {
+            font-size: 100px;
+            animation: heartbeat 1.2s infinite;
+        }
+
+        /* FLOATING HEARTS */
+        .hearts span {
+            position: fixed;
+            bottom: -50px;
+            font-size: 25px;
+            animation: floatUp 6s linear infinite;
+            opacity: 0.7;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hearts span:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .hearts span:nth-child(2) {
+            left: 30%;
+            animation-delay: 2s;
+        }
+
+        .hearts span:nth-child(3) {
+            left: 50%;
+            animation-delay: 4s;
+        }
+
+        .hearts span:nth-child(4) {
+            left: 70%;
+            animation-delay: 1s;
+        }
+
+        .hearts span:nth-child(5) {
+            left: 90%;
+            animation-delay: 3s;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ANIMATIONS */
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* CONFETTI */
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- WELCOME SCREEN -->
+    <div id="welcome">
+        <div class="welcome-content">
+            <div class="gift">🎁</div>
+
+            <h1>Hey, pretty gurl 👀</h1>
+
+            <p>
+                Someone has a little birthday surprise
+                waiting for you...
+            </p>
+
+            <button class="btn" onclick="openBirthday()">
+                ✨ Open Your Surprise 🫢
+            </button>
+        </div>
+    </div>
+
+    <!-- FLOATING HEARTS -->
+    <div class="hearts">
+        <span>💕</span>
+        <span>💗</span>
+        <span>💖</span>
+        <span>💓</span>
+        <span>💕</span>
+    </div>
+
+    <!-- MAIN BIRTHDAY CARD -->
+    <div class="card">
+
+        <h1>Happy Birthday, Ify! 🎂💕</h1>
+
+        <p>
+            Today is all about celebrating you —
+            my amazing, beautiful, slightly annoying 😂,
+            but very special sister.
+        </p>
+
+        <button class="btn" onclick="revealMessage()">
+            🎁 Open Your Surprise
+        </button>
+
+        <!-- HIDDEN MESSAGE -->
+        <div id="extra" class="hidden-message">
+            I hope this new year of your life brings
+            you so much happiness, beautiful memories,
+            answered prayers, and everything your heart
+            desires.
+
+            <br><br>
+
+            I love you so much, Ify. ❤️
+        </div>
+
+        <!-- BIRTHDAY LETTER -->
+        <div id="letter" class="letter">
+            <h2>💌 A Little Letter For You</h2>
+
+            <p>
+                TO MY SOMETIMES ANNOYING SISTER,
+            </p>
+
+            <p>
+                Having you as my sister is honestly one
+                of those things I will always be grateful
+                for. We've had our funny moments, our
+                arguments, our laughter, and probably
+                enough sibling drama to make our own
+                TV series 😂.
+            </p>
+
+            <p>
+                But underneath all of that, I hope you
+                always know that I love you deeply and
+                I will always wish the very best for you.
+            </p>
+
+            <p>
+                May this new chapter bring you happiness,
+                peace, success, beautiful memories and
+                everything you've been praying for.
+            </p>
+
+            <p>
+                Happy Birthday once again, Ify. ❤️
+            </p>
+        </div>
+
+        <!-- FINAL MESSAGE -->
+        <div id="finalMessage" class="final-message">
+            <div class="big-heart">❤️</div>
+
+            <h2>Happy Birthday, Birthday Girl! 🎂</h2>
+
+            <p>
+                Keep smiling, keep shining, and never
+                forget how loved you are.
+            </p>
+
+            <p class="love">
+                I love you always, Ify. You are the best 🤗😚💕
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        /* OPEN THE WEBSITE */
+        function openBirthday() {
+            const welcome = document.getElementById("welcome");
+
+            welcome.style.opacity = "0";
+
+            setTimeout(function () {
+                welcome.style.display = "none";
+            }, 800);
+        }
+
+        /* OPEN THE SURPRISE */
+        function revealMessage() {
+            const message = document.getElementById("extra");
+            const letter = document.getElementById("letter");
+            const finalMessage = document.getElementById("finalMessage");
+
+            message.style.display = "block";
+
+            setTimeout(function () {
+                letter.style.display = "block";
+            }, 500);
+
+            setTimeout(function () {
+                finalMessage.style.display = "block";
+            }, 1000);
+
+            for (let i = 0; i < 40; i++) {
+                createConfetti();
+            }
+        }
+
+        /* CREATE CONFETTI */
+        function createConfetti() {
+            const confetti = document.createElement("div");
+
+            const emojis = [
+                "🎉",
+                "🎊",
+                "✨",
+                "💕",
+                "💖",
+                "🥳",
+                "😚"
+            ];
+
+            confetti.innerHTML =
+                emojis[Math.floor(Math.random() * emojis.length)];
+
+            confetti.style.position = "fixed";
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.top = "-20px";
+            confetti.style.fontSize =
+                (15 + Math.random() * 15) + "px";
+            confetti.style.zIndex = "1000";
+            confetti.style.pointerEvents = "none";
+
+            confetti.style.animation =
+                "fall " +
+                (2 + Math.random() * 2) +
+                "s linear forwards";
+
+            document.body.appendChild(confetti);
+
+            setTimeout(function () {
+                confetti.remove();
+            }, 4000);
+        }
+    </script>
+
+</body>
+</html>
